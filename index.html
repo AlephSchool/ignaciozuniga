@@ -9,7 +9,7 @@
             --bg-main: #0b0f19;
             --bg-sidebar: #111827;
             --bg-card: #1f2937;
-            --accent: #38bdf8; /* Celeste i.O */
+            --accent: #38bdf8;
             --accent-glow: rgba(56, 189, 248, 0.2);
             --text-main: #f3f4f6;
             --text-muted: #9ca3af;
@@ -30,7 +30,6 @@
             min-height: 100vh;
         }
 
-        /* --- Barra Lateral (Sidebar) --- */
         .sidebar {
             width: 280px;
             background-color: var(--bg-sidebar);
@@ -77,7 +76,6 @@
             border-left: 3px solid var(--accent);
         }
 
-        /* --- Contenido Principal --- */
         .main-content {
             margin-left: 280px;
             flex: 1;
@@ -91,6 +89,16 @@
             margin-bottom: 30px;
         }
 
+        /* Nombre en texto pequeño arriba */
+        .author {
+            font-size: 0.85rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
         header h1 {
             font-size: 2.2rem;
             color: var(--text-main);
@@ -101,7 +109,6 @@
             color: var(--text-muted);
         }
 
-        /* --- Bloques Desplegables --- */
         .doc-section {
             background-color: var(--bg-card);
             border: 1px solid var(--border-color);
@@ -156,12 +163,6 @@
             line-height: 1.6;
         }
 
-        .accordion-content h3 {
-            color: var(--text-main);
-            margin: 15px 0 10px 0;
-        }
-
-        /* --- Cuadrícula de Galería de Imágenes --- */
         .image-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -198,18 +199,6 @@
             text-align: center;
         }
 
-        /* Bloques de código */
-        pre {
-            background-color: #0d1117;
-            padding: 14px;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            overflow-x: auto;
-            font-family: 'Courier New', Courier, monospace;
-            color: #58a6ff;
-            margin: 10px 0;
-        }
-
         @media (max-width: 768px) {
             body { flex-direction: column; }
             .sidebar { width: 100%; height: auto; position: relative; }
@@ -219,48 +208,45 @@
 </head>
 <body>
 
-    <!-- NAVEGACIÓN LATERAL -->
     <aside class="sidebar">
         <div class="brand">
             <span>🤖</span> Proyecto i.O
         </div>
         <ul class="nav-menu">
             <li><a href="#fase-diseno" class="nav-link">1. Concepto y Diseño</a></li>
-            <li><a href="#fase-hardware" class="nav-link">2. Hardware y Componentes</a></li>
-            <li><a href="#fase-software" class="nav-link">3. Programación</a></li>
-            <li><a href="#fase-bitacora" class="nav-link">4. Registro de Errores</a></li>
+            <li><a href="#fase-hardware" class="nav-link">2. Hardware y Testeo</a></li>
+            <li><a href="#fase-software" class="nav-link">3. Software y Pruebas</a></li>
         </ul>
     </aside>
 
-    <!-- CONTENIDO PRINCIPAL -->
     <main class="main-content">
         <header>
+            <p class="author">Ignacio Zúñiga</p>
             <h1>Documentación Técnica de i.O</h1>
-            <p>Bitácora con galerías visuales del proceso de desarrollo de i.O</p>
+            <p>Bitácora con carpetas de imágenes organizadas por secciones de testeo.</p>
         </header>
 
         <!-- SECCIÓN 1 -->
         <div class="doc-section" id="fase-diseno">
             <button class="accordion-header">
-                <span>🎨 1. Concepto y Modelado 3D</span>
+                <span>🎨 1. Concepto y Modelado (Sección 1)</span>
                 <span class="icon">▼</span>
             </button>
             <div class="accordion-body">
                 <div class="accordion-content">
-                    <p>Avances visuales del diseño y renderizado inicial del robot:</p>
+                    <p>Imágenes guardadas en la carpeta <strong>img/seccion1/</strong>:</p>
                     
-                    <h3>Galería del Diseño:</h3>
                     <div class="image-gallery">
                         <div class="image-card">
-                            <img src="boceto_original.jpg" alt="Boceto en papel">
+                            <img src="img/seccion1/foto1.jpg" alt="Testeo 1 - Seccion 1">
                             <div class="image-caption">Boceto inicial en papel</div>
                         </div>
                         <div class="image-card">
-                            <img src="render_3d.jpg" alt="Render 3D">
-                            <div class="image-caption">Modelo 3D sin fondo</div>
+                            <img src="img/seccion1/foto2.jpg" alt="Testeo 2 - Seccion 1">
+                            <div class="image-caption">Render 3D sin fondo</div>
                         </div>
                         <div class="image-card">
-                            <img src="escenario_final.jpg" alt="Render con escenario">
+                            <img src="img/seccion1/foto3.jpg" alt="Testeo 3 - Seccion 1">
                             <div class="image-caption">Render 3D en estudio</div>
                         </div>
                     </div>
@@ -271,26 +257,25 @@
         <!-- SECCIÓN 2 -->
         <div class="doc-section" id="fase-hardware">
             <button class="accordion-header">
-                <span>⚙️ 2. Hardware y Componentes</span>
+                <span>⚙️ 2. Hardware y Componentes (Sección 2)</span>
                 <span class="icon">▼</span>
             </button>
             <div class="accordion-body">
                 <div class="accordion-content">
-                    <p>Fotografías de las piezas físicas e integración de circuitos:</p>
+                    <p>Imágenes guardadas en la carpeta <strong>img/seccion2/</strong>:</p>
                     
-                    <h3>Componentes Electrónicos:</h3>
                     <div class="image-gallery">
                         <div class="image-card">
-                            <img src="pantalla_oled.jpg" alt="Pantalla para ojos">
-                            <div class="image-caption">Pantalla OLED prueba de color</div>
+                            <img src="img/seccion2/foto1.jpg" alt="Testeo 1 - Seccion 2">
+                            <div class="image-caption">Prueba de luces pantalla OLED</div>
                         </div>
                         <div class="image-card">
-                            <img src="chasis_3d.jpg" alt="Chasis impreso">
+                            <img src="img/seccion2/foto2.jpg" alt="Testeo 2 - Seccion 2">
                             <div class="image-caption">Chasis impreso en 3D</div>
                         </div>
                         <div class="image-card">
-                            <img src="circuito_base.jpg" alt="Cableado interno">
-                            <div class="image-caption">Conexión de motores y microcontrolador</div>
+                            <img src="img/seccion2/foto3.jpg" alt="Testeo 3 - Seccion 2">
+                            <div class="image-caption">Conexión de motores y circuitos</div>
                         </div>
                     </div>
                 </div>
@@ -300,47 +285,25 @@
         <!-- SECCIÓN 3 -->
         <div class="doc-section" id="fase-software">
             <button class="accordion-header">
-                <span>💻 3. Animaciones de Pantalla</span>
+                <span>💻 3. Pruebas y Testeo de Software (Sección 3)</span>
                 <span class="icon">▼</span>
             </button>
             <div class="accordion-body">
                 <div class="accordion-content">
-                    <p>Pruebas de animación para los ojos y texto celestes:</p>
+                    <p>Imágenes guardadas en la carpeta <strong>img/seccion3/</strong>:</p>
                     
-                    <h3>Estados de Expresión:</h3>
                     <div class="image-gallery">
                         <div class="image-card">
-                            <img src="expresion_normal.jpg" alt="Ojos normales">
-                            <div class="image-caption">Expresión en reposo</div>
+                            <img src="img/seccion3/foto1.jpg" alt="Testeo 1 - Seccion 3">
+                            <div class="image-caption">Testeo de ojos en reposo</div>
                         </div>
                         <div class="image-card">
-                            <img src="expresion_guino.jpg" alt="Guiño de ojos">
-                            <div class="image-caption">Animación de parpadeo</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- SECCIÓN 4 -->
-        <div class="doc-section" id="fase-bitacora">
-            <button class="accordion-header">
-                <span>📝 4. Registro de Ensamblaje y Pruebas</span>
-                <span class="icon">▼</span>
-            </button>
-            <div class="accordion-body">
-                <div class="accordion-content">
-                    <p>Pruebas finales de armado y funcionamiento:</p>
-                    
-                    <h3>Evolución del Proyecto:</h3>
-                    <div class="image-gallery">
-                        <div class="image-card">
-                            <img src="primer_armado.jpg" alt="Ensamblaje 1">
-                            <div class="image-caption">Primer ensamblaje de prueba</div>
+                            <img src="img/seccion3/foto2.jpg" alt="Testeo 2 - Seccion 3">
+                            <div class="image-caption">Testeo de animación parpadeo</div>
                         </div>
                         <div class="image-card">
-                            <img src="producto_final.jpg" alt="Robot Terminado">
-                            <div class="image-caption">Versión final funcionando</div>
+                            <img src="img/seccion3/foto3.jpg" alt="Testeo 3 - Seccion 3">
+                            <div class="image-caption">Prueba final con gabinete cerrado</div>
                         </div>
                     </div>
                 </div>
@@ -349,7 +312,6 @@
 
     </main>
 
-    <!-- SCRIPT DESPLEGABLE -->
     <script>
         const headers = document.querySelectorAll('.accordion-header');
 
