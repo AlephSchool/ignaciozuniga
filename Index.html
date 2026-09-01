@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentación Técnica — Proyecto i.O</title>
+    <style>
+        :root {
+            --bg-main: #0b0f19;
+            --bg-sidebar: #111827;
+            --bg-card: #1f2937;
+            --accent: #38bdf8; /* Celeste i.O */
+            --accent-glow: rgba(56, 189, 248, 0.2);
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --border-color: #374151;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* --- Barra Lateral (Sidebar) --- */
+        .sidebar {
+            width: 280px;
+            background-color: var(--bg-sidebar);
+            border-right: 1px solid var(--border-color);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--accent);
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 10px 14px;
+            color: var(--text-muted);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            background-color: var(--bg-card);
+            color: var(--accent);
+            border-left: 3px solid var(--accent);
+        }
+
+        /* --- Contenido Principal --- */
+        .main-content {
+            margin-left: 280px;
+            flex: 1;
+            padding: 40px;
+            max-width: 1000px;
+        }
+
+        header {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            color: var(--text-main);
+            margin-bottom: 8px;
+        }
+
+        header p {
+            color: var(--text-muted);
+        }
+
+        /* --- Bloques Desplegables --- */
+        .doc-section {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            transition: border-color 0.2s ease;
+        }
+
+        .doc-section:hover {
+            border-color: var(--accent);
+        }
+
+        .accordion-header {
+            width: 100%;
+            padding: 20px 24px;
+            background: none;
+            border: none;
+            color: var(--text-main);
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .accordion-header .icon {
+            color: var(--accent);
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-header.active .icon {
+            transform: rotate(180deg);
+        }
+
+        .accordion-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 0 24px;
+        }
+
+        .accordion-content {
+            padding: 20px 0;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .accordion-content h3 {
+            color: var(--text-main);
+            margin: 15px 0 10px 0;
+        }
+
+        /* --- Cuadrícula de Galería de Imágenes --- */
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+
+        .image-card {
+            background-color: #0d1117;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .image-card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--border-color);
+            transition: transform 0.3s ease;
+        }
+
+        .image-card:hover img {
+            transform: scale(1.03);
+        }
+
+        .image-caption {
+            padding: 10px 12px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        /* Bloques de código */
+        pre {
+            background-color: #0d1117;
+            padding: 14px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            color: #58a6ff;
+            margin: 10px 0;
+        }
+
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; position: relative; }
+            .main-content { margin-left: 0; padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVEGACIÓN LATERAL -->
+    <aside class="sidebar">
+        <div class="brand">
+            <span>🤖</span> Proyecto i.O
+        </div>
+        <ul class="nav-menu">
+            <li><a href="#fase-diseno" class="nav-link">1. Concepto y Diseño</a></li>
+            <li><a href="#fase-hardware" class="nav-link">2. Hardware y Componentes</a></li>
+            <li><a href="#fase-software" class="nav-link">3. Programación</a></li>
+            <li><a href="#fase-bitacora" class="nav-link">4. Registro de Errores</a></li>
+        </ul>
+    </aside>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="main-content">
+        <header>
+            <h1>Documentación Técnica de i.O</h1>
+            <p>Bitácora con galerías visuales del proceso de desarrollo de i.O</p>
+        </header>
+
+        <!-- SECCIÓN 1 -->
+        <div class="doc-section" id="fase-diseno">
+            <button class="accordion-header">
+                <span>🎨 1. Concepto y Modelado 3D</span>
+                <span class="icon">▼</span>
+            </button>
+            <div class="accordion-body">
+                <div class="accordion-content">
+                    <p>Avances visuales del diseño y renderizado inicial del robot:</p>
+                    
+                    <h3>Galería del Diseño:</h3>
+                    <div class="image-gallery">
+                        <div class="image-card">
+                            <img src="boceto_original.jpg" alt="Boceto en papel">
+                            <div class="image-caption">Boceto inicial en papel</div>
+                        </div>
+                        <div class="image-card">
+                            <img src="render_3d.jpg" alt="Render 3D">
+                            <div class="image-caption">Modelo 3D sin fondo</div>
+                        </div>
+                        <div class="image-card">
+                            <img src="escenario_final.jpg" alt="Render con escenario">
+                            <div class="image-caption">Render 3D en estudio</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN 2 -->
+        <div class="doc-section" id="fase-hardware">
+            <button class="accordion-header">
+                <span>⚙️ 2. Hardware y Componentes</span>
+                <span class="icon">▼</span>
+            </button>
+            <div class="accordion-body">
+                <div class="accordion-content">
+                    <p>Fotografías de las piezas físicas e integración de circuitos:</p>
+                    
+                    <h3>Componentes Electrónicos:</h3>
+                    <div class="image-gallery">
+                        <div class="image-card">
+                            <img src="pantalla_oled.jpg" alt="Pantalla para ojos">
+                            <div class="image-caption">Pantalla OLED prueba de color</div>
+                        </div>
+                        <div class="image-card">
+                            <img src="chasis_3d.jpg" alt="Chasis impreso">
+                            <div class="image-caption">Chasis impreso en 3D</div>
+                        </div>
+                        <div class="image-card">
+                            <img src="circuito_base.jpg" alt="Cableado interno">
+                            <div class="image-caption">Conexión de motores y microcontrolador</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN 3 -->
+        <div class="doc-section" id="fase-software">
+            <button class="accordion-header">
+                <span>💻 3. Animaciones de Pantalla</span>
+                <span class="icon">▼</span>
+            </button>
+            <div class="accordion-body">
+                <div class="accordion-content">
+                    <p>Pruebas de animación para los ojos y texto celestes:</p>
+                    
+                    <h3>Estados de Expresión:</h3>
+                    <div class="image-gallery">
+                        <div class="image-card">
+                            <img src="expresion_normal.jpg" alt="Ojos normales">
+                            <div class="image-caption">Expresión en reposo</div>
+                        </div>
+                        <div class="image-card">
+                            <img src="expresion_guino.jpg" alt="Guiño de ojos">
+                            <div class="image-caption">Animación de parpadeo</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN 4 -->
+        <div class="doc-section" id="fase-bitacora">
+            <button class="accordion-header">
+                <span>📝 4. Registro de Ensamblaje y Pruebas</span>
+                <span class="icon">▼</span>
+            </button>
+            <div class="accordion-body">
+                <div class="accordion-content">
+                    <p>Pruebas finales de armado y funcionamiento:</p>
+                    
+                    <h3>Evolución del Proyecto:</h3>
+                    <div class="image-gallery">
+                        <div class="image-card">
+                            <img src="primer_armado.jpg" alt="Ensamblaje 1">
+                            <div class="image-caption">Primer ensamblaje de prueba</div>
+                        </div>
+                        <div class="image-card">
+                            <img src="producto_final.jpg" alt="Robot Terminado">
+                            <div class="image-caption">Versión final funcionando</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- SCRIPT DESPLEGABLE -->
+    <script>
+        const headers = document.querySelectorAll('.accordion-header');
+
+        headers.forEach(header => {
+            header.addEventListener('click', () => {
+                header.classList.toggle('active');
+                const body = header.nextElementSibling;
+                
+                if (header.classList.contains('active')) {
+                    body.style.maxHeight = body.scrollHeight + "px";
+                } else {
+                    body.style.maxHeight = "0";
+                }
+            });
+        });
+    </script>
+</body>
+</html>
