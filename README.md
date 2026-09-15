@@ -1,2 +1,2 @@
-# ignaciouniga
+# ignaciozuniga
 Web de Ignacio Zuniga
